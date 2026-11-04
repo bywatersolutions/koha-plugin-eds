@@ -9,6 +9,7 @@ This is ByWater Solutions' build of [EBSCO's EDS plugin](https://github.com/ebsc
 ### Added
 - The EDS results, record detail, advanced search and publication pages now tell search engines not to index them or follow their links.
 - The EDS pages and the lookups behind the OPAC search box now turn away requests that no OPAC page makes, such as crawlers opening them directly. A visitor without cookies is sent back once to check that their browser keeps them, and each visitor is limited to 30 EDS pages and 120 lookups a minute.
+- On a Koha with the bot guard turned on (opac_bot_guard in koha-conf.xml), the EDS pages and lookups now need the same trust cookie as the rest of the OPAC. A page view without one gets the bot guard's challenge and a lookup without one is refused, while observe mode, exempt addresses and logged in patrons work as they do elsewhere in the OPAC.
 
 ### Changed
 - OPAC pages no longer fetch the plugin's language file and the Customisation Manager JavaScript separately; both are now part of the page. Customisation Manager JavaScript now runs after the EDS search box is set up.
