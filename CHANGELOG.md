@@ -6,6 +6,8 @@ This is ByWater Solutions' build of [EBSCO's EDS plugin](https://github.com/ebsc
 
 ## [Unreleased]
 
+## [25.11.001-bws.2] - 2026-11-10
+
 ### Added
 - The EDS results, record detail, advanced search and publication pages now tell search engines not to index them or follow their links.
 - The EDS pages and the lookups behind the OPAC search box now turn away requests that no OPAC page makes, such as crawlers opening them directly. A visitor without cookies is sent back once to check that their browser keeps them, and each visitor is limited to 30 EDS pages and 120 lookups a minute.
@@ -26,5 +28,6 @@ This is ByWater Solutions' build of [EBSCO's EDS plugin](https://github.com/ebsc
 ### Fixed
 - OPAC pages no longer start an eds-raw.pl process on every view for visitors without browser session storage, such as headless crawlers, which could use up a server's memory. The search fields are now part of the page.
 
-[Unreleased]: https://github.com/bywatersolutions/koha-plugin-eds/compare/25.11.001-bws...HEAD
+[Unreleased]: https://github.com/bywatersolutions/koha-plugin-eds/compare/v25.11.001-bws.2...HEAD
+[25.11.001-bws.2]: https://github.com/bywatersolutions/koha-plugin-eds/compare/25.11.001-bws...v25.11.001-bws.2
 [25.11.001-bws]: https://github.com/bywatersolutions/koha-plugin-eds/releases/tag/25.11.001-bws
