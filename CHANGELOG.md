@@ -6,6 +6,9 @@ This is ByWater Solutions' build of [EBSCO's EDS plugin](https://github.com/ebsc
 
 ## [Unreleased]
 
+### Changed
+- Koha's plugin list now shows the release's version, such as 25.11.001-bws.2, instead of EBSCO's 25.11001 for every ByWater build.
+
 ## [25.11.001-bws.2] - 2026-11-10
 
 ### Added

@@ -33,9 +33,11 @@ $PluginDir = $PluginDir.'/Koha/Plugin/EDS';
 ################# DO NOT TOUCH - CONTROLLED BY build.py
 our $MAJOR_VERSION = "25.11";
 our $SUB_VERSION = "001";
-our $VERSION = $MAJOR_VERSION . "" . $SUB_VERSION;
 our $DATE_UPDATE = '2026-01-29';
 ######################################################
+
+# The release workflow puts the release's tag here, e.g. 25.11.001-bws.2
+our $VERSION = "{VERSION}";
 
 ## Here is our metadata, some keys are required, some are optional
 our $metadata = {
