@@ -6,6 +6,8 @@ This is ByWater Solutions' build of [EBSCO's EDS plugin](https://github.com/ebsc
 
 ## [Unreleased]
 
+## [25.11.001-bws.3] - 2026-11-16
+
 ### Changed
 - Koha's plugin list now shows the release's version, such as 25.11.001-bws.2, instead of EBSCO's 25.11001 for every ByWater build.
 
@@ -31,6 +33,7 @@ This is ByWater Solutions' build of [EBSCO's EDS plugin](https://github.com/ebsc
 ### Fixed
 - OPAC pages no longer start an eds-raw.pl process on every view for visitors without browser session storage, such as headless crawlers, which could use up a server's memory. The search fields are now part of the page.
 
-[Unreleased]: https://github.com/bywatersolutions/koha-plugin-eds/compare/v25.11.001-bws.2...HEAD
+[Unreleased]: https://github.com/bywatersolutions/koha-plugin-eds/compare/v25.11.001-bws.3...HEAD
+[25.11.001-bws.3]: https://github.com/bywatersolutions/koha-plugin-eds/compare/v25.11.001-bws.2...v25.11.001-bws.3
 [25.11.001-bws.2]: https://github.com/bywatersolutions/koha-plugin-eds/compare/25.11.001-bws...v25.11.001-bws.2
 [25.11.001-bws]: https://github.com/bywatersolutions/koha-plugin-eds/releases/tag/25.11.001-bws
