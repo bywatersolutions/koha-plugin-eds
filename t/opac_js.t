@@ -19,7 +19,7 @@ use Modern::Perl;
 use utf8;
 
 use Test::NoWarnings;
-use Test::More tests => 4;
+use Test::More tests => 5;
 
 use FindBin qw( $Bin );
 use lib "$Bin/lib";
@@ -63,7 +63,7 @@ subtest 'opac_js() tests' => sub {
 
     $schema->storage->txn_begin;
     t::lib::Mocks::mock_preference( 'OPACLanguages', 'en,de-DE,fr-FR' );
-    $plugin->store_data( { edsinfo => EDSTest::data('edsinfo.json'), defaultsearch => 'koha' } );
+    $plugin->store_data( { edsinfo => EDSTest::data('edsinfo.json'), edsprofileid => 'edsapi', defaultsearch => 'koha' } );
 
     my $output = opac_js();
     like( $output, qr/var defaultSearch="koha";/, 'The default search is set' );
@@ -103,11 +103,31 @@ subtest 'opac_js() tests' => sub {
     $schema->storage->txn_rollback;
 };
 
+subtest 'no EDS profile' => sub {
+    plan tests => 3;
+
+    $schema->storage->txn_begin;
+    $plugin->store_data( { edsinfo => EDSTest::data('edsinfo.json'), defaultsearch => 'koha' } );
+
+    C4::Context->dbh->do(
+        q{DELETE FROM plugin_data WHERE plugin_class = 'Koha::Plugin::EDS' AND plugin_key = 'edsprofileid'});
+    is( opac_js(), q{}, 'Nothing is added to the page when no profile was ever saved' );
+
+    # The configure page saves an empty field as '-'
+    $plugin->store_data( { edsprofileid => '-' } );
+    is( opac_js(), q{}, 'Nothing is added to the page when the profile was saved empty' );
+
+    $plugin->store_data( { edsprofileid => 'edsapi' } );
+    like( opac_js(), qr/EDSScript\.js/, 'EDSScript.js is loaded once there is a profile' );
+
+    $schema->storage->txn_rollback;
+};
+
 subtest 'custom JS' => sub {
     plan tests => 6;
 
     $schema->storage->txn_begin;
-    $plugin->store_data( { edsinfo => EDSTest::data('edsinfo.json'), defaultsearch => 'koha' } );
+    $plugin->store_data( { edsinfo => EDSTest::data('edsinfo.json'), edsprofileid => 'edsapi', defaultsearch => 'koha' } );
 
     my $custom_dir  = "$plugin_dir/js/custom";
     my $custom_file = "$custom_dir/custom.js";
@@ -153,7 +173,7 @@ subtest 'no language files' => sub {
     plan tests => 2;
 
     $schema->storage->txn_begin;
-    $plugin->store_data( { edsinfo => EDSTest::data('edsinfo.json'), defaultsearch => 'koha' } );
+    $plugin->store_data( { edsinfo => EDSTest::data('edsinfo.json'), edsprofileid => 'edsapi', defaultsearch => 'koha' } );
 
     my $lang_dir = "$plugin_dir/bootstrap/includes/lang";
     rename $lang_dir, "$lang_dir.off" or die "$lang_dir: $!";

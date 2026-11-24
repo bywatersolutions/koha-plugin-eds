@@ -6,6 +6,9 @@ This is ByWater Solutions' build of [EBSCO's EDS plugin](https://github.com/ebsc
 
 ## [Unreleased]
 
+### Fixed
+- When the plugin is enabled but no EDS profile has been set up, OPAC pages no longer offer an EDS search that can't work or ask the server for EDS search fields on every page.
+
 ## [25.11.001-bws.3] - 2026-11-16
 
 ### Changed

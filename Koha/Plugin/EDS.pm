@@ -244,6 +244,11 @@ sub update_search {
 
 sub opac_js {
     my ( $self ) = @_;
+
+    # Without an EDS profile the plugin was never set up, and EDSScript.js would offer an EDS search that can't work
+    my $profile_id = $self->retrieve_data('edsprofileid') // q{};
+    return q{} if $profile_id eq q{} || $profile_id eq '-';
+
     my $default_search = $self->retrieve_data('defaultsearch');
 
     # Inline the search field list so a new browser session doesn't have to fetch it from the eds-raw.pl CGI
