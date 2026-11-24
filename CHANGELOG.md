@@ -6,6 +6,8 @@ This is ByWater Solutions' build of [EBSCO's EDS plugin](https://github.com/ebsc
 
 ## [Unreleased]
 
+## [25.11.001-bws.4] - 2026-11-24
+
 ### Fixed
 - When the plugin is enabled but no EDS profile has been set up, OPAC pages no longer offer an EDS search that can't work or ask the server for EDS search fields on every page.
 
@@ -36,7 +38,8 @@ This is ByWater Solutions' build of [EBSCO's EDS plugin](https://github.com/ebsc
 ### Fixed
 - OPAC pages no longer start an eds-raw.pl process on every view for visitors without browser session storage, such as headless crawlers, which could use up a server's memory. The search fields are now part of the page.
 
-[Unreleased]: https://github.com/bywatersolutions/koha-plugin-eds/compare/v25.11.001-bws.3...HEAD
+[Unreleased]: https://github.com/bywatersolutions/koha-plugin-eds/compare/v25.11.001-bws.4...HEAD
+[25.11.001-bws.4]: https://github.com/bywatersolutions/koha-plugin-eds/compare/v25.11.001-bws.3...v25.11.001-bws.4
 [25.11.001-bws.3]: https://github.com/bywatersolutions/koha-plugin-eds/compare/v25.11.001-bws.2...v25.11.001-bws.3
 [25.11.001-bws.2]: https://github.com/bywatersolutions/koha-plugin-eds/compare/25.11.001-bws...v25.11.001-bws.2
 [25.11.001-bws]: https://github.com/bywatersolutions/koha-plugin-eds/releases/tag/25.11.001-bws
